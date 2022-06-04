@@ -4,3 +4,4 @@
 *.ipr
 .mvn
 HELP.md
+target
