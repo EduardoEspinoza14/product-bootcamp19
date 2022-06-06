@@ -3,9 +3,9 @@ server:
 spring:
   data:
     mongodb:
-      host: 127.0.0.1
+      host: localhost
       port: 27017
       database: bootcamp_19
-  mongodb:
-    embedded:
-      version: 4.0.21
+#  mongodb:
+#    embedded:
+#      version: 4.0.21
