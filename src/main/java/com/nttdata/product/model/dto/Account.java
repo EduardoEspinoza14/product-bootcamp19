@@ -1,4 +1,4 @@
-package com.nttdata.product.entity;
+package com.nttdata.product.model.dto;
 
 public interface Account {
 
