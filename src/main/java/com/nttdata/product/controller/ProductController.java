@@ -1,11 +1,13 @@
 package com.nttdata.product.controller;
 
 import com.nttdata.product.bussiness.ProductService;
+import com.nttdata.product.model.dto.SavingsAccount;
 import com.nttdata.product.model.mongo.ProductMongo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -25,14 +27,12 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    /*@GetMapping("/prueba")
-    public String prueba(){
+    @PostMapping("/prueba")
+    public Mono<ProductMongo> prueba(){
         SavingsAccount product = new SavingsAccount();
-        product.setId(3);
         product.setStart_date(new Date());
-        product.setMax_movement_limit(50);
-        productRepository.save(product);
-        return "exito 2";
-    }*/
+        product.setMax_movement_limit(40);
+        return productService.insertProduct(Mono.just(product));
+    }
 
 }

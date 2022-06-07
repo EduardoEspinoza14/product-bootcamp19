@@ -19,6 +19,6 @@ public abstract class ProductMongo {
 
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date start_date;
-    private final String type;
+    private String type;
 
 }

@@ -1,17 +1,17 @@
 package com.nttdata.product.model.dto;
 
 import com.nttdata.product.model.mongo.ProductMongo;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class SavingsAccount extends ProductMongo implements Account {
 
     protected Integer max_movement_limit;
 
     public SavingsAccount() {
-        super(PRODUCT_TYPE_1);
+        this.setType(PRODUCT_TYPE_1);
     }
 
     @Override
