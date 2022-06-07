@@ -8,6 +8,12 @@ public interface ProductService {
 
     Flux<ProductMongo> getProducts();
 
-    Mono<ProductMongo> insertProduct(Mono<ProductMongo> product);
+    Mono<ProductMongo> getProduct(String id);
+
+    Mono<ProductMongo> insertProduct(ProductMongo product);
+
+    Mono<ProductMongo> updateProduct(ProductMongo product, String id);
+
+    Mono<Void> deleteProduct(String id);
 
 }

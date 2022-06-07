@@ -9,5 +9,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ProductRepository extends ReactiveMongoRepository<ProductMongo, String> {
     //Flux<SavingsAccount> findAllById(Integer id);
+    Flux<ProductMongo> findByType(String type);
 
 }
