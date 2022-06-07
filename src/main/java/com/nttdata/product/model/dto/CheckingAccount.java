@@ -1,19 +1,17 @@
 package com.nttdata.product.model.dto;
 
 import com.nttdata.product.model.mongo.ProductMongo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
-public class SavingsAccount extends ProductMongo implements Account {
+public class CheckingAccount extends ProductMongo implements Account {
 
-    private Integer max_movement_limit;
+    protected Double commission_amount;
 
-    public SavingsAccount() {
-        super(PRODUCT_TYPE_1);
+    public CheckingAccount() {
+        super(PRODUCT_TYPE_2);
     }
 
     @Override
@@ -31,7 +29,7 @@ public class SavingsAccount extends ProductMongo implements Account {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
-                ", max_movement_limit: " + getMax_movement_limit() +
+                ", commission_amount: " + getCommission_amount() +
                 "}";
     }
 

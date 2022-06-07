@@ -1,19 +1,20 @@
 package com.nttdata.product.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nttdata.product.model.mongo.ProductMongo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+import java.util.Date;
+
 @Getter
-public class SavingsAccount extends ProductMongo implements Account {
+@Setter
+public class FixedTerm extends ProductMongo implements Account {
 
-    private Integer max_movement_limit;
+    private Integer single_day_movement;
 
-    public SavingsAccount() {
-        super(PRODUCT_TYPE_1);
+    public FixedTerm() {
+        super(PRODUCT_TYPE_3);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class SavingsAccount extends ProductMongo implements Account {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
-                ", max_movement_limit: " + getMax_movement_limit() +
+                ", single_day_movement: " + getSingle_day_movement() +
                 "}";
     }
 

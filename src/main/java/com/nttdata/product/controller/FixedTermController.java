@@ -1,7 +1,7 @@
 package com.nttdata.product.controller;
 
-import com.nttdata.product.bussiness.service.SavingsAccountService;
-import com.nttdata.product.model.dto.SavingsAccount;
+import com.nttdata.product.bussiness.service.FixedTermService;
+import com.nttdata.product.model.dto.FixedTerm;
 import com.nttdata.product.model.mongo.ProductMongo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,14 +12,14 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/savings-account")
+@RequestMapping("/fixed-term")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE })
-public class SavingsAccountController {
+public class FixedTermController {
 
-    private final Logger log = LoggerFactory.getLogger(SavingsAccountController.class);
+    private final Logger log = LoggerFactory.getLogger(FixedTermController.class);
 
     @Autowired
-    SavingsAccountService service;
+    FixedTermService service;
 
     @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<ProductMongo> getAllProducts() {
@@ -32,12 +32,12 @@ public class SavingsAccountController {
     }
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ProductMongo> createProduct(@RequestBody SavingsAccount product){
+    public Mono<ProductMongo> createProduct(@RequestBody FixedTerm product){
         return service.insertProduct(product);
     }
 
     @PostMapping(value = "/update/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ProductMongo> modifyProduct(@RequestBody SavingsAccount product, @PathVariable String id){
+    public Mono<ProductMongo> modifyProduct(@RequestBody FixedTerm product, @PathVariable String id){
         return service.updateProduct(product, id);
     }
 
@@ -45,14 +45,5 @@ public class SavingsAccountController {
     public Mono<Void> removeProduct(@PathVariable String id){
         return service.deleteProduct(id);
     }
-
-    /*@PostMapping("/prueba")
-    public Mono<String> prueba(){
-        SavingsAccount product = new SavingsAccount();
-        product.setStart_date(new Date());
-        product.setMax_movement_limit(30);
-        productService.insertProduct(Mono.just(product)).subscribe(pd -> log.info(pd.toString()));
-        return Mono.just("exito");
-    }*/
 
 }
