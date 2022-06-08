@@ -30,6 +30,7 @@ public class Card extends ProductMongo implements Credit {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
+                ", customerId: " + getCustomerId() +
                 ", credit_limit: " + getCredit_limit() +
                 ", expiration_date: " + getExpiration_date() +
                 ", security_code: " + getSecurity_code() +

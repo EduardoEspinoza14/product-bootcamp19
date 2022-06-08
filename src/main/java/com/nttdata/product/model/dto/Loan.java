@@ -19,4 +19,16 @@ public class Loan extends ProductMongo implements Credit {
     public Double calculateFee() {
         return null;
     }
+
+    @Override
+    public String toString(){
+        return "{id: " + getId() +
+                ", start_date: " + getStart_date() +
+                ", type: " + getType() +
+                ", customerId: " + getCustomerId() +
+                ", credit_amount: " + getCredit_amount() +
+                ", payment_day: " + getPayment_day() +
+                "}";
+    }
+
 }

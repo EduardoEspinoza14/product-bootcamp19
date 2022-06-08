@@ -32,5 +32,6 @@ public abstract class ProductMongo {
     private String number;
     //@Transient
     private String type;
+    private String customerId;
 
 }

@@ -32,6 +32,7 @@ public class FixedTerm extends ProductMongo implements Account {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
+                ", customerId: " + getCustomerId() +
                 ", single_day_movement: " + getSingle_day_movement() +
                 "}";
     }

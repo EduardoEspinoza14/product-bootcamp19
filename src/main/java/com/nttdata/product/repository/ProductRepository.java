@@ -11,4 +11,6 @@ public interface ProductRepository extends ReactiveMongoRepository<ProductMongo,
     //Flux<SavingsAccount> findAllById(Integer id);
     Flux<ProductMongo> findByType(String type);
 
+    Flux<ProductMongo> findByCustomerId(String customerId);
+
 }

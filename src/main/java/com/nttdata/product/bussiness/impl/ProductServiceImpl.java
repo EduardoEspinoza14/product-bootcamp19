@@ -5,10 +5,14 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import com.nttdata.product.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public abstract class ProductServiceImpl implements ProductService {
+@Service
+@Primary
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -16,6 +20,11 @@ public abstract class ProductServiceImpl implements ProductService {
     @Override
     public Flux<ProductMongo> getProducts() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public Flux<ProductMongo> getProductsByCustomer(String customerId) {
+        return productRepository.findByCustomerId(customerId);
     }
 
     public Flux<ProductMongo> getProductsByType(String type) {

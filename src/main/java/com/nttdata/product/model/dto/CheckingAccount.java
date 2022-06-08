@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 public class CheckingAccount extends ProductMongo implements Account {
 
-    protected Double commission_amount;
+    private Double commission_amount;
 
     public CheckingAccount() {
         super(PRODUCT_TYPE_2);
@@ -29,6 +29,7 @@ public class CheckingAccount extends ProductMongo implements Account {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
+                ", customerId: " + getCustomerId() +
                 ", commission_amount: " + getCommission_amount() +
                 "}";
     }

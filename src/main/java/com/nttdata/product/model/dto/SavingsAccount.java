@@ -31,6 +31,7 @@ public class SavingsAccount extends ProductMongo implements Account {
         return "{id: " + getId() +
                 ", start_date: " + getStart_date() +
                 ", type: " + getType() +
+                ", customerId: " + getCustomerId() +
                 ", max_movement_limit: " + getMax_movement_limit() +
                 "}";
     }
