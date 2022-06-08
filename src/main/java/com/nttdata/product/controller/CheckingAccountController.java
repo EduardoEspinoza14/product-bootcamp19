@@ -27,7 +27,7 @@ public class CheckingAccountController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<ProductMongo> getAllProducts(@PathVariable String id) {
+    public Mono<ProductMongo> getProduct(@PathVariable String id) {
         return service.getProduct(id);
     }
 
