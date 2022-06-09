@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
+//SE REFIERE AL PRODUCTO, CUENTA A PLAZO FIJO, UN TIPO DE CUENTA DEL BANCO
 @Getter
 @Setter
 public class FixedTerm extends ProductMongo implements Account {

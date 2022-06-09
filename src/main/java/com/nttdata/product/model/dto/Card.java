@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.Date;
 
+//SE REFIERE A LAS TARJETAS DE CREDITO QUE PUEDE TENER UN CLIENTE
 @Getter
 @Setter
 public class Card extends ProductMongo implements Credit {

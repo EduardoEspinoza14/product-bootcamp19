@@ -4,6 +4,7 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import lombok.Getter;
 import lombok.Setter;
 
+//SE REFIERE A LAS CUENTAS CORRIENTES, UN PRODUCTO DEL BANCO
 @Setter
 @Getter
 public class CheckingAccount extends ProductMongo implements Account {

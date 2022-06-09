@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+//SE REFIERE A LAS CUENTAS DE AHORROS, UN TIPO DE PRODUCTO QUE PUEDEN TENER LOS CLIENTES TIPO PERSONA
 @Setter
 @Getter
 public class SavingsAccount extends ProductMongo implements Account {

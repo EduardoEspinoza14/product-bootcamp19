@@ -2,17 +2,15 @@ package com.nttdata.product.model.mongo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.ReadOnlyProperty;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+//CLASE PRINCIPAL DE PRODUCTOS DE ALBERCA TODOS LOS TIPOS DE PRODUCTOS
 @Data
 @Document(collection = "products")
-public abstract class ProductMongo {
+public class ProductMongo {
 
     public static String PRODUCT_TYPE_1 = "Savings Account";
     public static String PRODUCT_TYPE_2 = "Checking Account";

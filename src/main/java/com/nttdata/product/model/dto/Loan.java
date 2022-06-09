@@ -4,6 +4,7 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import lombok.Getter;
 import lombok.Setter;
 
+//SE REFIERE AL PRODUCTO, PRESTAMO O CREDITO PERSONAL QUE PUEDEN TENER LOS CLIENTES, EXTIENDE DE LA CLASE PADRE PRODUCTO
 @Getter
 @Setter
 public class Loan extends ProductMongo implements Credit {
