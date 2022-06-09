@@ -5,6 +5,7 @@ import com.nttdata.product.model.dto.SavingsAccount;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Repository
 public interface ProductRepository extends ReactiveMongoRepository<ProductMongo, String> {
@@ -12,5 +13,7 @@ public interface ProductRepository extends ReactiveMongoRepository<ProductMongo,
     Flux<ProductMongo> findByType(String type);
 
     Flux<ProductMongo> findByCustomerId(String customerId);
+
+    Mono<ProductMongo> findByCustomerIdAndId(String customerId, String id);
 
 }

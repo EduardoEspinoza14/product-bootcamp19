@@ -37,6 +37,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Mono<ProductMongo> getProductByCustomer(String customerId, String id) {
+        return productRepository.findByCustomerIdAndId(customerId, id);
+    }
+
+    @Override
     public Mono<ProductMongo> insertProduct(ProductMongo product) {
         return productRepository.insert(product);
     }

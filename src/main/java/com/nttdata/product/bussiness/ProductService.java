@@ -12,6 +12,8 @@ public interface ProductService {
 
     Mono<ProductMongo> getProduct(String id);
 
+    Mono<ProductMongo> getProductByCustomer(String customerId, String id);
+
     Mono<ProductMongo> insertProduct(ProductMongo product);
 
     Mono<ProductMongo> updateProduct(ProductMongo product, String id);

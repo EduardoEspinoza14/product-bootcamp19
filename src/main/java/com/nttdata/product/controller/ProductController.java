@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/product")
@@ -22,6 +23,11 @@ public class ProductController {
     @GetMapping(value = "/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<ProductMongo> getAllProductsCustomer(@PathVariable String customerId) {
         return service.getProductsByCustomer(customerId);
+    }
+
+    @GetMapping(value = "/{customerId}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Mono<ProductMongo> getProductCustomer(@PathVariable String customerId, @PathVariable String id) {
+        return service.getProductByCustomer(customerId, id);
     }
 
 }
