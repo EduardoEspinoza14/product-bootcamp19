@@ -4,35 +4,27 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import lombok.Getter;
 import lombok.Setter;
 
-//SE REFIERE A LAS CUENTAS CORRIENTES, UN PRODUCTO DEL BANCO
+/**
+ * Class CheckingAccount.
+ */
 @Setter
 @Getter
-public class CheckingAccount extends ProductMongo implements Account {
+public class CheckingAccount extends ProductMongo {
 
-    private Double commission_amount;
+  private Double commissionAmount;
 
-    public CheckingAccount() {
-        super(PRODUCT_TYPE_2);
-    }
+  public CheckingAccount() {
+    super(PRODUCT_TYPE_2);
+  }
 
-    @Override
-    public Double calculateCommission() {
-        return null;
-    }
-
-    @Override
-    public Boolean canMakeMovement() {
-        return null;
-    }
-
-    @Override
-    public String toString(){
-        return "{id: " + getId() +
-                ", start_date: " + getStart_date() +
-                ", type: " + getType() +
-                ", customerId: " + getCustomerId() +
-                ", commission_amount: " + getCommission_amount() +
-                "}";
-    }
+  @Override
+  public String toString() {
+    return "{id: " + getId()
+            + ", startDate: " + getStartDate()
+            + ", type: " + getType()
+            + ", customerId: " + getCustomerId()
+            + ", commissionAmount: " + getCommissionAmount()
+            + "}";
+  }
 
 }

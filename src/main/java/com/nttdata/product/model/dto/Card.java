@@ -2,40 +2,36 @@ package com.nttdata.product.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nttdata.product.model.mongo.ProductMongo;
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
-//SE REFIERE A LAS TARJETAS DE CREDITO QUE PUEDE TENER UN CLIENTE
+/**
+ * Class Card.
+ */
 @Getter
 @Setter
-public class Card extends ProductMongo implements Credit {
+public class Card extends ProductMongo {
 
-    private Double credit_limit;
-    @JsonFormat(pattern="yyyy-MM-dd")
-    private Date expiration_date;
-    private String security_code;
+  private Double creditLimit;
+  @JsonFormat(pattern = "yyyy-MM-dd")
+  private Date expirationDate;
+  private String securityCode;
 
-    public Card() {
-        super(PRODUCT_TYPE_4);
-    }
+  public Card() {
+    super(PRODUCT_TYPE_4);
+  }
 
-    @Override
-    public Double calculateFee() {
-        return null;
-    }
-
-    @Override
-    public String toString(){
-        return "{id: " + getId() +
-                ", start_date: " + getStart_date() +
-                ", type: " + getType() +
-                ", customerId: " + getCustomerId() +
-                ", credit_limit: " + getCredit_limit() +
-                ", expiration_date: " + getExpiration_date() +
-                ", security_code: " + getSecurity_code() +
-                "}";
-    }
+  @Override
+  public String toString() {
+    return "{id: " + getId()
+            + ", startDate: " + getStartDate()
+            + ", type: " + getType()
+            + ", customerId: " + getCustomerId()
+            + ", creditLimit: " + getCreditLimit()
+            + ", expirationDate: " + getExpirationDate()
+            + ", securityCode: " + getSecurityCode()
+            + "}";
+  }
 
 }

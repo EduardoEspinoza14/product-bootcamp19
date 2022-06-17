@@ -10,56 +10,59 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Class ProductServiceImpl.
+ */
 @Service
 @Primary
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+  @Autowired
+  private ProductRepository productRepository;
 
-    @Override
-    public Flux<ProductMongo> getProducts() {
-        return productRepository.findAll();
-    }
+  @Override
+  public Flux<ProductMongo> getProducts() {
+    return productRepository.findAll();
+  }
 
-    @Override
-    public Flux<ProductMongo> getProductsByCustomer(String customerId) {
-        return productRepository.findByCustomerId(customerId);
-    }
+  @Override
+  public Flux<ProductMongo> getProductsByCustomer(String customerId) {
+    return productRepository.findByCustomerId(customerId);
+  }
 
-    public Flux<ProductMongo> getProductsByType(String type) {
-        return productRepository.findByType(type);
-    }
+  public Flux<ProductMongo> getProductsByType(String type) {
+    return productRepository.findByType(type);
+  }
 
-    @Override
-    public Mono<ProductMongo> getProduct(String id) {
-        return productRepository.findById(id);
-    }
+  @Override
+  public Mono<ProductMongo> getProduct(String id) {
+    return productRepository.findById(id);
+  }
 
-    @Override
-    public Mono<ProductMongo> getProductByCustomer(String customerId, String id) {
-        return productRepository.findByCustomerIdAndId(customerId, id);
-    }
+  @Override
+  public Mono<ProductMongo> getProductByCustomer(String customerId, String id) {
+    return productRepository.findByCustomerIdAndId(customerId, id);
+  }
 
-    @Override
-    public Mono<ProductMongo> insertProduct(ProductMongo product) {
-        return productRepository.insert(product);
-    }
+  @Override
+  public Mono<ProductMongo> insertProduct(ProductMongo product) {
+    return productRepository.insert(product);
+  }
 
-    @Override
-    public Mono<ProductMongo> updateProduct(ProductMongo product, String id) {
-        return productRepository.findById(id)
-                .map(p_db -> {
-                    BeanUtils.copyProperties(product, p_db, "id", "type");
-                    return p_db;
-                })
-                .flatMap(productRepository::save);
-    }
+  @Override
+  public Mono<ProductMongo> updateProduct(ProductMongo product, String id) {
+    return productRepository.findById(id)
+            .map(productMongo -> {
+              BeanUtils.copyProperties(product, productMongo, "id", "type");
+              return productMongo;
+            })
+            .flatMap(productRepository::save);
+  }
 
-    @Override
-    public Mono<Void> deleteProduct(String id) {
-        return productRepository.findById(id)
-                .flatMap(p->productRepository.deleteById(p.getId()));
-    }
+  @Override
+  public Mono<Void> deleteProduct(String id) {
+    return productRepository.findById(id)
+            .flatMap(p -> productRepository.deleteById(p.getId()));
+  }
 
 }

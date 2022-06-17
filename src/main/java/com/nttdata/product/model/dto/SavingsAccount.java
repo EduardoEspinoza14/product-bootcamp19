@@ -1,40 +1,30 @@
 package com.nttdata.product.model.dto;
 
 import com.nttdata.product.model.mongo.ProductMongo;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-//SE REFIERE A LAS CUENTAS DE AHORROS, UN TIPO DE PRODUCTO QUE PUEDEN TENER LOS CLIENTES TIPO PERSONA
+/**
+ * Class SavingsAccount.
+ */
 @Setter
 @Getter
-public class SavingsAccount extends ProductMongo implements Account {
+public class SavingsAccount extends ProductMongo {
 
-    private Integer max_movement_limit;
+  private Integer maxMovementLimit;
 
-    public SavingsAccount() {
-        super(PRODUCT_TYPE_1);
-    }
+  public SavingsAccount() {
+    super(PRODUCT_TYPE_1);
+  }
 
-    @Override
-    public Double calculateCommission() {
-        return null;
-    }
-
-    @Override
-    public Boolean canMakeMovement() {
-        return null;
-    }
-
-    @Override
-    public String toString(){
-        return "{id: " + getId() +
-                ", start_date: " + getStart_date() +
-                ", type: " + getType() +
-                ", customerId: " + getCustomerId() +
-                ", max_movement_limit: " + getMax_movement_limit() +
-                "}";
-    }
+  @Override
+  public String toString() {
+    return "{id: " + getId()
+            + ", start_date: " + getStartDate()
+            + ", type: " + getType()
+            + ", customerId: " + getCustomerId()
+            + ", max_movement_limit: " + getMaxMovementLimit()
+            + "}";
+  }
 
 }

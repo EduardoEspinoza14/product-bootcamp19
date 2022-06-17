@@ -5,12 +5,16 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
+
+/**
+ * Class CardService.
+ */
 @Service
 public class CardService extends ProductServiceImpl {
 
-    @Override
-    public Flux<ProductMongo> getProducts() {
-        return getProductsByType(ProductMongo.PRODUCT_TYPE_4);
-    }
+  @Override
+  public Flux<ProductMongo> getProducts() {
+    return getProductsByType(ProductMongo.PRODUCT_TYPE_4);
+  }
 
 }
