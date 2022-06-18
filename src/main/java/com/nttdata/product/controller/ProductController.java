@@ -19,7 +19,7 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/product")
 @CrossOrigin(origins = "*", methods = {
-  RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE
+    RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE
 })
 public class ProductController {
 
