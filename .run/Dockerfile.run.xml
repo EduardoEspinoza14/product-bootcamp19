@@ -4,7 +4,14 @@
       <settings>
         <option name="imageTag" value="product" />
         <option name="containerName" value="" />
-        <option name="publishAllPorts" value="true" />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="8091" />
+              <option name="hostPort" value="8091" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
         <option name="sourceFilePath" value="Dockerfile" />
       </settings>
     </deployment>
