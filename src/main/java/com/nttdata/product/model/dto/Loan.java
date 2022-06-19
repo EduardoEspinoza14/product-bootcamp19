@@ -22,6 +22,7 @@ public class Loan extends ProductMongo {
   public String toString() {
     return "{id: " + getId()
             + ", startDate: " + getStartDate()
+            + ", number: " + getNumber()
             + ", type: " + getType()
             + ", customerId: " + getCustomerId()
             + ", creditAmount: " + getCreditAmount()

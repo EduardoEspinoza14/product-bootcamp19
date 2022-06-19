@@ -21,6 +21,7 @@ public class FixedTerm extends ProductMongo {
   public String toString() {
     return "{id: " + getId()
             + ", startDate: " + getStartDate()
+            + ", number: " + getNumber()
             + ", type: " + getType()
             + ", customerId: " + getCustomerId()
             + ", singleDayMovement: " + getSingleDayMovement()

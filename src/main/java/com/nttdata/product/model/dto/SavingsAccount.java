@@ -21,6 +21,7 @@ public class SavingsAccount extends ProductMongo {
   public String toString() {
     return "{id: " + getId()
             + ", start_date: " + getStartDate()
+            + ", number: " + getNumber()
             + ", type: " + getType()
             + ", customerId: " + getCustomerId()
             + ", max_movement_limit: " + getMaxMovementLimit()
