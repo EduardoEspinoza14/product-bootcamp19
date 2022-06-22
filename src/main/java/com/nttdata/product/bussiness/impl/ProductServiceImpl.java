@@ -1,6 +1,7 @@
 package com.nttdata.product.bussiness.impl;
 
 import com.nttdata.product.bussiness.ProductService;
+import com.nttdata.product.configuration.KafkaProducerConfiguration;
 import com.nttdata.product.model.mongo.ProductMongo;
 import com.nttdata.product.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
@@ -9,6 +10,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import reactor.kafka.sender.KafkaSender;
+import reactor.kafka.sender.SenderOptions;
 
 /**
  * Class ProductServiceImpl.
@@ -19,6 +23,9 @@ public class ProductServiceImpl implements ProductService {
 
   @Autowired
   private ProductRepository productRepository;
+
+  @Autowired
+  private SenderOptions<String, ProductMongo> senderOptions;
 
   @Override
   public Flux<ProductMongo> getProducts() {
@@ -46,7 +53,10 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public Mono<ProductMongo> insertProduct(ProductMongo product) {
-    return productRepository.insert(product);
+    return productRepository.insert(product)
+            .doOnSuccess(productMongo -> KafkaProducerConfiguration
+                    .senderCreate(senderOptions, KafkaProducerConfiguration.insertRecord(productMongo))
+                    .subscribe());
   }
 
   @Override
@@ -56,13 +66,19 @@ public class ProductServiceImpl implements ProductService {
               BeanUtils.copyProperties(product, productMongo, "id", "type");
               return productMongo;
             })
-            .flatMap(productRepository::save);
+            .flatMap(productRepository::save)
+            .doOnSuccess(productMongo -> KafkaProducerConfiguration
+                    .senderCreate(senderOptions, KafkaProducerConfiguration.updateRecord(productMongo))
+                    .subscribe());
   }
 
   @Override
   public Mono<Void> deleteProduct(String id) {
     return productRepository.findById(id)
-            .flatMap(p -> productRepository.deleteById(p.getId()));
+            .flatMap(p -> productRepository.deleteById(p.getId()))
+            .doOnSuccess(voidReturn -> KafkaProducerConfiguration
+                    .senderCreate(senderOptions, KafkaProducerConfiguration.deleteRecord(id))
+                    .subscribe());
   }
 
 }
