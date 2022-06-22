@@ -26,6 +26,11 @@ public class ProductController {
   @Autowired
   ProductService service;
 
+  @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+  public Flux<ProductMongo> getAllProducts() {
+    return service.getProducts();
+  }
+
   @GetMapping(value = "/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
   public Flux<ProductMongo> getAllProductsCustomer(@PathVariable String customerId) {
     return service.getProductsByCustomer(customerId);
