@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 
 /**
@@ -55,7 +53,8 @@ public class ProductServiceImpl implements ProductService {
   public Mono<ProductMongo> insertProduct(ProductMongo product) {
     return productRepository.insert(product)
             .doOnSuccess(productMongo -> KafkaProducerConfiguration
-                    .senderCreate(senderOptions, KafkaProducerConfiguration.insertRecord(productMongo))
+                    .senderCreate(senderOptions,
+                            KafkaProducerConfiguration.insertRecord(productMongo))
                     .subscribe());
   }
 
@@ -68,7 +67,8 @@ public class ProductServiceImpl implements ProductService {
             })
             .flatMap(productRepository::save)
             .doOnSuccess(productMongo -> KafkaProducerConfiguration
-                    .senderCreate(senderOptions, KafkaProducerConfiguration.updateRecord(productMongo))
+                    .senderCreate(senderOptions,
+                            KafkaProducerConfiguration.updateRecord(productMongo))
                     .subscribe());
   }
 
