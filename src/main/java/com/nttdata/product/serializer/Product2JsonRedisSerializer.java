@@ -36,7 +36,8 @@ public class Product2JsonRedisSerializer implements RedisSerializer<ProductMongo
       try {
         return this.objectMapper.writeValueAsBytes(productMongo);
       } catch (Exception var3) {
-        throw new SerializationException("Could not write JSON: " + var3.getMessage(), var3);
+        throw new SerializationException("Could not write JSON: "
+                + var3.getMessage(), var3);
       }
     }
   }
@@ -48,7 +49,8 @@ public class Product2JsonRedisSerializer implements RedisSerializer<ProductMongo
     } else {
       try {
         JavaType type =  this.objectMapper.getTypeFactory().constructType(LinkedHashMap.class);
-        LinkedHashMap<String, String> hashMap = this.objectMapper.readValue(bytes, 0, bytes.length, type);
+        LinkedHashMap<String, String> hashMap =
+                this.objectMapper.readValue(bytes, 0, bytes.length, type);
         if (hashMap.get("type").equals(ProductMongo.PRODUCT_TYPE_1)) {
           type =  this.objectMapper.getTypeFactory().constructType(SavingsAccount.class);
         } else if (hashMap.get("type").equals(ProductMongo.PRODUCT_TYPE_2)) {
