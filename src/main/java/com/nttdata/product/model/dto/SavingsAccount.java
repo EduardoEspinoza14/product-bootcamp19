@@ -24,7 +24,7 @@ public class SavingsAccount extends ProductMongo {
             + ", number: " + getNumber()
             + ", type: " + getType()
             + ", customerId: " + getCustomerId()
-            + ", max_movement_limit: " + getMaxMovementLimit()
+            + ", maxMovementLimit: " + getMaxMovementLimit()
             + "}";
   }
 

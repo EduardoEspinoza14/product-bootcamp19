@@ -6,7 +6,7 @@ import com.nttdata.product.model.mongo.ProductMongo;
 import com.nttdata.product.repository.ProductRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,7 +16,7 @@ import reactor.kafka.sender.SenderOptions;
  * Class ProductServiceImpl.
  */
 @Service
-@Primary
+@ConditionalOnProperty (name = "cache.enabled", havingValue = "false")
 public class ProductServiceImpl implements ProductService {
 
   @Autowired
@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
     return productRepository.findByCustomerId(customerId);
   }
 
+  @Override
   public Flux<ProductMongo> getProductsByType(String type) {
     return productRepository.findByType(type);
   }

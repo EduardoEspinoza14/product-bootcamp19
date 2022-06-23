@@ -18,6 +18,8 @@ public interface ProductService {
   //OBTENER UN PRODUCTO POR SU ID
   Mono<ProductMongo> getProduct(String id);
 
+  Flux<ProductMongo> getProductsByType(String type);
+
   //OBTENER UN PRODUCTO POR SU ID Y ID DEL CLIENTE, VALIDA LA PERTENENCIA
   Mono<ProductMongo> getProductByCustomer(String customerId, String id);
 
