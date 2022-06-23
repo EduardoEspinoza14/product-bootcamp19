@@ -16,7 +16,7 @@ import reactor.kafka.sender.SenderOptions;
  * Class ProductServiceImpl.
  */
 @Service
-@ConditionalOnProperty (name = "cache.enabled", havingValue = "false")
+@ConditionalOnProperty (name = "cache.enabled", havingValue = "false", matchIfMissing = true)
 public class ProductServiceImpl implements ProductService {
 
   @Autowired
