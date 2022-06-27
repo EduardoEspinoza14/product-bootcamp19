@@ -18,6 +18,7 @@ public class ProductMongo {
   public static String PRODUCT_TYPE_3 = "Fixed Term";
   public static String PRODUCT_TYPE_4 = "Card";
   public static String PRODUCT_TYPE_5 = "Loan";
+  public static String PRODUCT_TYPE_6 = "Wallet";
 
   public ProductMongo(String type) {
     setType(type);
